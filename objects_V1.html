@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang = "fr">
+    <head>
+        <meta charset="utf-8">
+        <title>Objects</title>
+    </head>
+    
+    <body>
+        <header>
+            <h1>links</h1>
+            
+        </header>
+       
+        
+        <ol id="links"></ol>
+        
+        
+        
+        
+        
+        <script>          
+            /* OBJECT */
+            let info = {
+                fullName: "stéphane HENRY", //object
+                title: "New Informatical",
+                links: [
+                    {monSite: "http://www.stephane.com"},
+                    {Geodis: "http://www.geodis.com"},
+                    {google: "http://www.google.fr"}
+                ], //array of object
+                fullNameFunc: function() {
+                    return this.fullName + " " + this.title
+                }, //method with function
+                get fullNameInverse() {
+                    return this.title + " " + this.fullName;
+                } //method with get
+            }      
+        
+            //loop to add at the ol
+            var output = "";
+            for (let i = 0, len = info.links.length; i < len; i++) {
+                for (key in info.links[i]){
+                    output += "<li>" + info.links[i][key] + "<a href='"  + "'> ---> " + key + "</li>";
+                    //console.log(info.links[i][key]);
+                } //loop object
+            } //loop array
+        
+            //add to the header
+            var nameHead = document.getElementsByTagName("header");
+            var head = document.createElement("span");
+            var headText = document.createTextNode(info.fullNameFunc());
+            head.appendChild(headText);
+            nameHead[0].appendChild(head);
+            
+            //add to the ol
+            var update = document.getElementById("links");
+            update.innerHTML = output;
+        
+            //test function et get
+            console.log(info.fullNameFunc());
+            console.log(info.fullNameInverse);
+        
+            /* ARRAY
+            let info =[
+                {"fullName": "stephane HENRY",
+                "title": "demandeur d'emploi"},
+                {"fullName": "Dominque HAVARD",
+                "title": "comptable"},
+            ];    
+            console.log(info);
+            */
+        </script>
+        
+    </body>
+    
+</html>
